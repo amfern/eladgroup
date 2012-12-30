@@ -1,0 +1,119 @@
+<style>
+header {
+	
+}
+
+body {
+  background: url(assets/bkg.png)
+}
+
+.tab-bar li {
+
+}
+
+.tab-bar {
+  background-color: #333;
+  background-image: none;
+}
+
+.login {
+  border-radius: 25px;
+  background-image: none;
+  background-color: #333;
+}
+
+.header {
+  background: url(assets/actionbarBackground.png) 
+}
+
+.mainView {
+  background: url(assets/bkg.png)
+}
+
+.personItem {
+  height:auto;
+  padding: 5px;
+  line-height: normal;
+  background-color: #DFDFDF;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.personItem .content{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.personItem .time {
+  float: right;
+  border-radius: 25px;
+  border: solid #666 1px;
+  font-size: 12px;
+  background-color: #ffffff;
+  padding: 0 5px;
+  top: 10px;
+  color: #666;
+  margin: 15px;
+}
+
+.personItem .personContent {
+  display: block;	
+}
+
+/* user's avatar */
+.personItem .tweetviewAvatar {
+  float: left;
+  margin-right: 10px;
+}
+
+/* content wrapper for tweets */
+.personItem .tweetviewContent {
+  padding-left:60px;
+}
+ 
+/* username formatting */
+.personItem .tweetviewUser {
+  font-size:80%;
+}
+ 
+/* actual tweet text formatting */
+.personItem .tweetviewText {
+  font-size:70%;
+  font-weight:normal;
+  padding-right:50px;
+  padding-bottom:10px;
+}
+  
+/* clears floats at the end of the list item */
+.personItem .tweetviewClear {
+  clear:both;
+}
+
+.modal {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border: solid #999 2px;
+  border-radius: 15px;
+  direction: rtl;
+}
+
+.modal .dijitDialogTitle {
+  display: inline-block;
+}
+
+.modal .closeText {
+  float: left;
+  display: inline-block;
+  position: static;
+}
+
+.modal .dijitDialogTitleBar {
+  border-bottom: solid #fff 1px;
+}
+
+</style>
+//TODO: add gradiant

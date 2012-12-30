@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- prevent cache TODO: remove when testing is done-->
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    
+    <!-- support hebrew -->
+    <meta http-equiv="Content-Type" content="text/html; CHARSET=utf-8">
+
+    <title>Elad Connect</title>
+    
+    <script src="js/vendor/polyfill.js"></script>
+  </head>
+  <body>
+    
+    <div data-dojo-type="dojox.mobile.Heading" data-dojo-props="fixed: top" class="header">
+      Elad Connect
+      <div data-dojo-type="dojox.mobile.ToolBarButton" style="float:right;" class="login" onClick="loginDialog.show();">כנס</div>
+    </div>
+    
+    <!-- popup modal -->
+    <div data-dojo-type="dijit/Dialog" data-dojo-id="loginDialog" title="title" class="modal">
+      משהוא כתוב
+      <div class="dijitDialogPaneActionBar">
+        <button dojoType="dijit.form.Button" class="buttonNode" id="ok">OK</button>
+        <button dojoType="dijit.form.Button" class="buttonNode" onClick="loginDialog.onCancel();" id="cancel">Cancel</button>
+      </div>
+    </div>
+    
+    
+    <!-- the bottom tabbar -->
+    <ul class="tab-bar" data-dojo-type="dojox.mobile.TabBar" data-dojo-props="barType:'tallTab', fixed: 'top'">
+      <!-- top left width height -->
+      <li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1:'assets/icnSurvey@2x.png', icon2:'assets/icnSurvey-selected@2x.png', selected: true, moveTo: 'survey'">משוב</li>
+      <li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1:'assets/icnSchedule@2x.png', icon2:'assets/icnSchedule-selected@2x.png', moveTo: 'schedule'">לוח זמנים</li>
+      <li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1:'assets/icnWhoishere@2x.png', icon2:'assets/icnWhoishere-selected@2x.png', moveTo: 'whoishere'">מי נמצא</li>
+      <li data-dojo-type="dojox.mobile.TabBarButton" data-dojo-props="icon1:'assets/icnAbout@2x.png', icon2:'assets/icnAbout-selected@2x.png', moveTo: 'about'">אודות</li>
+    </ul>
+    
+    <!-- survey view -->
+    <div id="survey" data-dojo-type="dojox.mobile.ScrollableView" data-dojo-props="selected: true">
+      <ul data-dojo-type="dojox.mobile.EdgeToEdgeList">
+        <li class="personItem" data-dojo-type="dojox.mobile.ListItem">
+          survey
+        </li>
+      </ul>
+    </div>
+
+    <!-- calendar view -->
+    <div id="schedule" data-dojo-type="dojox.mobile.ScrollableView">
+       <ul data-dojo-type="dojox.mobile.EdgeToEdgeList">
+        <li class="personItem" data-dojo-type="dojox.mobile.ListItem">
+          calendar
+        </li>
+      </ul>
+    </div>
+    
+    <!-- whoishere view -->
+    <div id="whoishere" data-dojo-type="elad.WhoisHereView">
+      <ul data-dojo-type="dojox.mobile.EdgeToEdgeList" class="tweetviewList">
+        
+      </ul>
+    </div>
+    
+    <!-- about view -->
+    <div id="about" data-dojo-type="dojox.mobile.View">
+      miau miau miau miau
+    </div>
+
+
+    
+    <!-- configure and load dojo -->
+    <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dijit/themes/claro/claro.css" />
+    <link rel="stylesheet" href="index.css" type="text/css" />
+    <script type="text/javascript">
+      var dojoConfig = (function(){
+        return {
+          async: true,
+          isDebug: true,
+          packages: [{
+            name: "elad",
+            location: "/js/modules"
+          }]
+        };
+      })();
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/dojo/1.8.1/dojo/dojo.js" data-dojo-config="isDebug:1, async:1"></script>
+    <script>
+      require(["dojox/mobile/parser",
+               "dijit/registry",
+               "dijit/Dialog",
+               "dijit/form/Button",
+               "dojox/mobile/deviceTheme",
+               "dojox/mobile",
+               "elad/WhoisHereView",
+               "dojox/mobile/ScrollableView", 
+               "dojox/mobile/TabBar", 
+               "dojox/mobile/compat",
+               "dojo/io/script", // JSONP solution
+               "dojo/DeferredList"], // handle multiple twitter rquests
+        function(parser, registery) {
+          // Set accounts for tweetview directly on the namespace
+          elad.ACCOUNTS = {
+            dojo: { enabled: true },
+            sitepen: { enabled: true }
+          };
+          
+          parser.parse();
+        }
+      );
+    </script>
+  </body>
+</html>
